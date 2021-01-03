@@ -13,7 +13,7 @@
 
 // server.listen(port);
 
-const https = require('https');
+const http = require('http');
 const app = require('./app');
 const port = process.env.PORT || 3000;
 const fs = require('file-system');
@@ -23,7 +23,7 @@ const options = {
     cert: fs.readFileSync(__dirname + '/ssl/cert.pem'),
 };
 
-https.createServer(options, app)
+http.createServer( app)
     .listen(port, () => {
-        console.log(`[Server] Server is running at https://localhost:${port}`);
+        console.log(`[Server] Server is running at http://localhost:${port}`);
     });
