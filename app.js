@@ -10,15 +10,22 @@ const userExercisesHistoryRoutes = require('./api/routes/userExercisesHistory');
 const userMealsHistory = require('./api/routes/userMealsHistory');
 const pollutionExternalApi = require('./api/routes/pollutionExternalApi');
 const userRoutes = require('./api/routes/user');
-
+const { performance } = require('perf_hooks');
+require('dotenv').config();
 // MongoDB settings - connection and set unique email
-mongoose.connect('mongodb+srv://admin:' + process.env.MONGO_PASSWORD + '@server.umpof.mongodb.net/<dbname>?retryWrites=true&w=majority',
+
+console.log('[Server] Initialize MongoDB Connection');
+let dbConectionTime = performance.now();
+
+mongoose.connect(
+    'mongodb+srv://admin:' + process.env.MONGODB_PASSWORD + '@server.umpof.mongodb.net/test?retryWrites=true&w=majority',
     {
         useNewUrlParser: true,
-        useUnifiedTopology: true
-    },
-);
-mongoose.set('useCreateIndex', true);
+        useUnifiedTopology: true,
+        useCreateIndex: true
+    })
+    .then(() => console.log('[Server] Successfully connected to MongoDB in ' + Math.ceil(performance.now() - dbConectionTime) + 'ms'))
+    .catch(error => console.log(error.message));
 
 // morgan
 app.use(morgan('dev'));
