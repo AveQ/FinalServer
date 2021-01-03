@@ -18,7 +18,7 @@ console.log('[Server] Initialize MongoDB Connection');
 let dbConectionTime = performance.now();
 
 mongoose.connect(
-    'mongodb+srv://admin:' + process.env.MONGODB_PASSWORD + '@server.umpof.mongodb.net/test?retryWrites=true&w=majority',
+    'mongodb+srv://admin:' + process.env.MONGODB_PASSWORD + '@server.umpof.mongodb.net/<dbname>?retryWrites=true&w=majority',
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
