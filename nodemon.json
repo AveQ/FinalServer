@@ -1,0 +1,7 @@
+{
+    "env": {
+        "MONGO_PASSWORD": "admin123",
+        "JWT_KEY": "haslo123",
+        "API_KEY_EMAIL": "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"
+    }
+}
