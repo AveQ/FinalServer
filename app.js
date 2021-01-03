@@ -51,12 +51,12 @@ app.use((req, res, next) => {
 });
 
 // routes
-app.use('/meals', mealRoutes);
-app.use('/exercises', exerciseRoutes);
-app.use('/userExercisesHistory', userExercisesHistoryRoutes);
-app.use('/mealsHistory', userMealsHistory);
-app.use('/pollutions', pollutionExternalApi);
-app.use('/users', userRoutes);
+app.use('/api/meals', mealRoutes);
+app.use('/api/exercises', exerciseRoutes);
+app.use('/api/userExercisesHistory', userExercisesHistoryRoutes);
+app.use('/api/mealsHistory', userMealsHistory);
+app.use('/api/pollutions', pollutionExternalApi);
+app.use('/api/users', userRoutes);
 
 //handling errors
 app.use((req, res, next) => {
