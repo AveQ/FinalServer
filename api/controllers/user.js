@@ -92,7 +92,8 @@ exports.users_signin = (req, res, next) => {
                                 ppm: user[0].ppm,
                                 cpm: user[0].cpm,
                                 physicalActivity: user[0].physicalActivity,
-                                isAdmin: user[0].isAdmin
+                                isAdmin: user[0].isAdmin,
+                                isRated: user[0].isRated
                             }
                         })
                     }
@@ -140,7 +141,8 @@ exports.users_get_user = (req, res, next) => {
                     ppm: user.ppm,
                     cpm: user.cpm,
                     physicalActivity: user.physicalActivity,
-                    isAdmin: user.isAdmin
+                    isAdmin: user.isAdmin,
+                    isRated: user.isRated
                 }
             });
         })

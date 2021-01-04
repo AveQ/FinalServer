@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose');
 
+
 const userSchema = mongoose.Schema({
     _id: mongoose.Schema.ObjectId,
     email:
@@ -30,7 +31,8 @@ const userSchema = mongoose.Schema({
     ppm: { type: Number, default: 0 },
     cpm: { type: Number, default: 0 },
     physicalActivity: { type: Number, default: 1.4 },
-    isAdmin: {type: Boolean, default: false}
+    isAdmin: {type: Boolean, default: false},
+    isRated: { type: [String], default: []}
 
 });
 
