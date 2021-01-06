@@ -2,9 +2,11 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+const nodemailer = require("nodemailer");
 const jwt = require('jsonwebtoken');
 const User = require("../models/user");
 const UserController = require('../controllers/user');
+const mail = require("@sendgrid/mail");
 
 // GET ALL
 exports.users_get_all = (req, res, next) => {
@@ -33,6 +35,7 @@ exports.users_get_all = (req, res, next) => {
             });
         });
 }
+
 
 // SIGNIN USER
 exports.users_signin = (req, res, next) => {
@@ -66,6 +69,7 @@ exports.users_signin = (req, res, next) => {
                                 expiresIn: "1h"
                             }
                         );
+
                         // jeżeli hasła się zgadzają zwróc status - 200
                         return res.status(200).json({
                             message: 'Auth successfull',
@@ -177,15 +181,45 @@ exports.users_signup_user = (req, res, next) => {
                             email: req.body.email,
                             password: hash
                         });
+                        if (req.body.email) {
+                            var transport = nodemailer.createTransport({
+                                service: 'Gmail',
+                                secure: false,
+                                auth: {
+                                    user: 'nflcenter2021@gmail.com',
+                                    pass: 'NFLCenter123!'
+                                },
+                                tls: {
+                                    rejectUnauthorized: false
+                                }
+                            })
+                            var mailOpt = {
+                                to: req.body.email,
+                                from: 'nflcenter@gmail.com',
+                                subject: 'Witaj w NFL-Center!',
+                                text: `
+                                Cześć!
+                                Miło nam Cię powitać w NFL-Center :)! Pamiętaj o uzupełnieniu danych personalnych w zakładce UŻYTKOWNIK. Dzięki temu będziesz mógł
+                                cieszyć się pełnymi możliwościami serwisu. Jeżeli chcesz przejść do panelu UŻYTKOWNIK błyskawicznie - kliknij na link poniżej.
+                    
+                                https://nfl-center-gui.herokuapp.com/settings
+                    
+                                Życzymy samych sukcesów,
+                                NFL-Center`
+                            }
+                            transport.sendMail(mailOpt, (err) => {console.log(err)})
+                        }
+                        // wyslij przywitalnego maila
                         user
                             .save()
                             .then(
                                 result => {
-                                    console.log(result);
-                                    res.status(201).json({
-                                        message: "User created"
-                                    })
-                                })
+                                                console.log(result);
+                                                res.status(201).json({
+                                                    message: "User created and Email has been send"
+                                                })
+                                        }
+                            )
                             .catch(
                                 err => {
                                     console.log(err);

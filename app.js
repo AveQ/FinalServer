@@ -10,6 +10,8 @@ const userExercisesHistoryRoutes = require('./api/routes/userExercisesHistory');
 const userMealsHistory = require('./api/routes/userMealsHistory');
 const pollutionExternalApi = require('./api/routes/pollutionExternalApi');
 const userRoutes = require('./api/routes/user');
+const muscleRoutes = require('./api/routes/muscles');
+
 const { performance } = require('perf_hooks');
 require('dotenv').config();
 // MongoDB settings - connection and set unique email
@@ -57,6 +59,7 @@ app.use('/api/userExercisesHistory', userExercisesHistoryRoutes);
 app.use('/api/mealsHistory', userMealsHistory);
 app.use('/api/pollutions', pollutionExternalApi);
 app.use('/api/users', userRoutes);
+app.use('/api/muscles', muscleRoutes);
 
 //handling errors
 app.use((req, res, next) => {
