@@ -13,8 +13,10 @@ exports.muscles_get_all = (req, res, next) => {
                     return {
                         _id: doc._id,
                         name: doc.name,
+                        namePL: doc.namePL,
                         dbName: doc.dbName,
                         description: doc.description,
+                        descriptionPL: doc.descriptionPL,
                         request: {
                             type: 'GET',
                             url: 'http://localhost:3000/muscles/' + doc._id
@@ -61,7 +63,9 @@ exports.muscles_post_muscle = (req, res, next) => {
         _id: new mongoose.Types.ObjectId(),
         dbName: req.body.dbName,
         name: req.body.name,
-        description: req.body.description
+        namePL: req.body.namePL,
+        description: req.body.description,
+        descriptionPL: req.body.descriptionPL
     });
     muscle.save().then(result => {
         console.log(result);

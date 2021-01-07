@@ -4,7 +4,8 @@ const mongoose = require('mongoose');
 
 const mealSchema = mongoose.Schema({
     _id: mongoose.Schema.ObjectId,
-    name:{type: String, required: true},
+    name: {type: String, required: true},
+    namePL: {type: String, required: true},
     oneServing:{ type: Number, default: 0 },
     kcal: { type: Number, default: 0 },
     proteins: { type: Number, default: 0 },

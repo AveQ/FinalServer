@@ -13,6 +13,7 @@ exports.meals_get_all = (req, res, next) => {
                     return {
                         _id: doc._id,
                         name: doc.name,
+                        namePL: doc.namePL,
                         oneServing: doc.oneServing,
                         kcal: doc.kcal,
                         proteins: doc.proteins,
@@ -50,6 +51,7 @@ exports.meals_get_meal = (req, res, next) => {
                 res.status(200).json({
                     _id: doc._id,
                     name: doc.name,
+                    namePL: doc.namePL,
                     oneServing: doc.oneServing,
                     kcal: doc.kcal,
                     proteins: doc.proteins,
@@ -79,6 +81,7 @@ exports.meals_post_meal = (req, res, next) => {
     const mealHistory = new Meal({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
+        namePL: req.body.namePL,
         oneServing: req.body.oneServing,
         kcal: req.body.kcal,
         proteins: req.body.proteins,

@@ -13,8 +13,10 @@ exports.exercises_get_all = (req, res, next) => {
                     return {
                         _id: doc._id,
                         name: doc.name,
+                        namePL: doc.namePL,
                         type: doc.type,
                         description: doc.description,
+                        descriptionPL: doc.descriptionPL,
                         rate: doc.rate,
                         popular: doc.popular,
                         musclePart: doc.musclePart,
@@ -67,8 +69,10 @@ exports.exercises_post_exercise = (req, res, next) => {
     const exercise = new Exercise({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
+        namePL: req.body.namePL,
         type: req.body.type,
         description: req.body.description,
+        descriptionPL: req.body.descriptionPL,
         rate: req.body.rate,
         popular: req.body.popular,
         musclePart: req.body.musclePart,

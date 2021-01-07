@@ -9,8 +9,10 @@ exerciseRate = {
 const exerciseSchema = mongoose.Schema({
     _id: mongoose.Schema.ObjectId,
     name: { type: String, required: true },
+    namePL: { type: String, required: true },
     type: { type: String, required: true },
     description: { type: String, required: true },
+    descriptionPL: { type: String, required: true },
     rate: {
         type: exerciseRate, default: {
             counter: 0,
