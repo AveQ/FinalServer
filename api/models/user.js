@@ -30,7 +30,7 @@ const userSchema = mongoose.Schema({
     counterSignIn: { type: Number, default: 0 },
     ppm: { type: Number, default: 0 },
     cpm: { type: Number, default: 0 },
-    physicalActivity: { type: Number, default: 1.4 },
+    physicalActivity: { type: Number, default: 1.5 },
     isAdmin: {type: Boolean, default: false},
     isRated: { type: [String], default: []}
 
