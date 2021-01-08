@@ -1,3 +1,5 @@
+// Sprawdz czy posiada uprawnienia administratora
+
 const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
